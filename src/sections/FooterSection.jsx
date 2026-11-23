@@ -5,7 +5,7 @@ export function FooterSection({ footer, guestPronoun }) {
   const closingMessage = applyGuestPronoun(footer.closingMessage, guestPronoun);
 
   return (
-    <footer className="border-t border-champagne/70 bg-blue-soft py-16 text-center">
+    <footer className="w-full max-w-full overflow-x-clip border-t border-champagne/70 bg-blue-soft pt-16 pb-24 text-center sm:pb-20">
       <Container className="max-w-2xl">
         <p className="text-sm leading-relaxed text-muted sm:text-base">
           {closingMessage}

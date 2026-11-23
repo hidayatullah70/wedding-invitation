@@ -21,7 +21,7 @@ export function Section({
     <section
       id={id}
       aria-labelledby={labelledBy}
-      className={`scroll-mt-20 py-16 sm:py-24 ${toneClass} ${className}`}
+      className={`w-full max-w-full scroll-mt-20 overflow-x-clip py-14 sm:py-24 ${toneClass} ${className}`}
     >
       <Container className={containerClassName}>{children}</Container>
     </section>

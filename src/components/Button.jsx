@@ -8,7 +8,7 @@ const VARIANT_CLASSES = {
 };
 
 const SIZE_CLASSES = {
-  sm: 'min-h-10 px-4 py-2 text-xs sm:text-sm',
+  sm: 'min-h-11 px-4 py-2 text-xs sm:text-sm',
   md: 'min-h-11 px-6 py-2.5 text-sm',
   lg: 'min-h-12 px-8 py-3 text-sm sm:text-base',
 };
@@ -24,7 +24,7 @@ export function Button({
   ...props
 }) {
   const baseClass =
-    'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors cursor-pointer disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose';
+    'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all active:scale-95 cursor-pointer disabled:cursor-not-allowed disabled:active:scale-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose';
   const classes = `${baseClass} ${VARIANT_CLASSES[variant] || VARIANT_CLASSES.primary} ${
     SIZE_CLASSES[size] || SIZE_CLASSES.md
   } ${className}`;

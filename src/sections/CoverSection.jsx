@@ -4,7 +4,7 @@ export function CoverSection({ cover, guestName, onOpen }) {
   return (
     <section
       aria-label="Sampul Undangan"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-ivory px-5 py-16"
+      className="relative flex min-h-dvh w-full max-w-full items-center justify-center overflow-hidden bg-ivory px-4 py-12 sm:px-6 sm:py-16"
     >
       {cover.coverImage ? (
         <>

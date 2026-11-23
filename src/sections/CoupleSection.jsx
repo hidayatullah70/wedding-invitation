@@ -31,16 +31,18 @@ function CountdownBlock({ event }) {
       <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-muted uppercase">
         Menuju Hari Bahagia • {event.timezoneLabel}
       </p>
-      <div className="grid grid-cols-4 gap-3 sm:gap-5">
+      <div className="grid grid-cols-4 gap-2 sm:gap-5">
         {units.map((unit) => (
           <div
             key={unit.label}
-            className="rounded-2xl border border-champagne/80 bg-ivory px-2 py-4 sm:py-5"
+            className="min-w-0 rounded-2xl border border-champagne/80 bg-ivory px-1.5 py-3.5 sm:px-2 sm:py-5"
           >
-            <p className="font-display text-3xl font-semibold tabular-nums text-rose-dark sm:text-4xl">
+            <p className="font-display text-2xl font-semibold tabular-nums text-rose-dark sm:text-4xl">
               {String(unit.value).padStart(2, '0')}
             </p>
-            <p className="mt-1 text-xs font-medium text-muted">{unit.label}</p>
+            <p className="mt-1 truncate text-[11px] font-medium text-muted sm:text-xs">
+              {unit.label}
+            </p>
           </div>
         ))}
       </div>

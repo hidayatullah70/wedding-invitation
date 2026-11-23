@@ -49,7 +49,10 @@ export function AudioControl({ audioConfig }) {
     : `Putar musik latar: ${audioConfig.title}`;
 
   return (
-    <div className="fixed right-4 bottom-4 z-30 flex flex-col items-end gap-2">
+    <div
+      className="fixed right-4 z-30 flex flex-col items-end gap-2"
+      style={{ bottom: 'calc(1rem + env(safe-area-inset-bottom, 0px))' }}
+    >
       {notice && (
         <p
           role="status"
@@ -77,7 +80,7 @@ export function AudioControl({ audioConfig }) {
         onClick={handleToggle}
         aria-label={label}
         aria-pressed={isPlaying}
-        className="inline-flex min-h-11 items-center gap-2 rounded-full border border-champagne bg-white/95 px-4 py-2 text-xs font-medium text-ink shadow-sm backdrop-blur-sm transition-colors hover:border-rose hover:text-rose-dark"
+        className="inline-flex min-h-11 items-center gap-2 rounded-full border border-champagne bg-white/95 px-4 py-2 text-xs font-medium text-ink shadow-sm backdrop-blur-sm transition-all active:scale-95 hover:border-rose hover:text-rose-dark"
       >
         <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-blush-soft text-rose-dark">
           {isPlaying ? (
