@@ -3,7 +3,7 @@ import { Button } from '../components/Button.jsx';
 import { DemoModeBanner } from '../components/DemoModeBanner.jsx';
 import { Section } from '../components/Section.jsx';
 import { SectionHeading } from '../components/SectionHeading.jsx';
-import { isDemoMode, submitRsvp } from '../services/invitationService.js';
+import { isRsvpDemoMode, submitRsvp } from '../services/invitationService.js';
 
 export function RsvpSection({ rsvp, initialGuestName = '' }) {
   const [guestName, setGuestName] = useState(initialGuestName);
@@ -71,8 +71,8 @@ export function RsvpSection({ rsvp, initialGuestName = '' }) {
 
       setStatus('success');
       setFeedback(
-        isDemoMode
-          ? 'Konfirmasi RSVP diterima dalam Mode Demo (tidak tersimpan ke server).'
+        isRsvpDemoMode
+          ? 'Konfirmasi RSVP diterima dalam Mode Demo (belum tersimpan ke Google Sheets).'
           : 'Terima kasih! Konfirmasi kehadiran Anda telah kami terima.'
       );
       setGuestName(initialGuestName);
@@ -98,7 +98,9 @@ export function RsvpSection({ rsvp, initialGuestName = '' }) {
       />
 
       <div className="mx-auto max-w-xl rounded-3xl border border-champagne/80 bg-white p-6 sm:p-9">
-        {isDemoMode && <DemoModeBanner />}
+        {isRsvpDemoMode && (
+          <DemoModeBanner envVarName="VITE_GOOGLE_SHEET_RSVP_URL" />
+        )}
 
         <form onSubmit={handleSubmit} noValidate className="space-y-5">
           <div>

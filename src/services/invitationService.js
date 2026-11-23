@@ -1,4 +1,8 @@
 import { apiRequest, isDemoModeEnabled } from './api.js';
+import {
+  isGoogleSheetRsvpConfigured,
+  submitRsvpToGoogleSheet,
+} from './googleSheetsService.js';
 
 /**
  * Service Layer untuk RSVP & Guestbook (API-SPEC.md)
@@ -34,6 +38,8 @@ function createDemoId(prefix) {
 }
 
 export const isDemoMode = isDemoModeEnabled();
+export const isRsvpUsingGoogleSheet = isGoogleSheetRsvpConfigured();
+export const isRsvpDemoMode = !isRsvpUsingGoogleSheet && isDemoMode;
 
 export async function submitRsvp({ guestName, attendance, guestCount, message }) {
   const normalizedPayload = {
@@ -42,6 +48,10 @@ export async function submitRsvp({ guestName, attendance, guestCount, message })
     guestCount: attendance === 'attending' ? Number(guestCount) : 0,
     message: message ? message.trim() : '',
   };
+
+  if (isRsvpUsingGoogleSheet) {
+    return submitRsvpToGoogleSheet(normalizedPayload);
+  }
 
   if (isDemoMode) {
     await wait(DEMO_LATENCY_MS);
