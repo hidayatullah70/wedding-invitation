@@ -1,11 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon, CloseIcon } from './Icons.jsx';
 
 export function Lightbox({ items, activeIndex, onClose, onNavigate }) {
   const isOpen = activeIndex !== null && items[activeIndex];
+  const closeButtonRef = useRef(null);
 
   useEffect(() => {
     if (!isOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeButtonRef.current?.focus();
 
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
@@ -18,7 +23,10 @@ export function Lightbox({ items, activeIndex, onClose, onNavigate }) {
     };
 
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, [isOpen, activeIndex, items.length, onClose, onNavigate]);
 
   if (!isOpen) return null;
@@ -42,6 +50,7 @@ export function Lightbox({ items, activeIndex, onClose, onNavigate }) {
             Foto {activeIndex + 1} / {items.length}
           </p>
           <button
+            ref={closeButtonRef}
             type="button"
             onClick={onClose}
             aria-label="Tutup pratinjau foto"

@@ -22,7 +22,7 @@ export function GallerySection({ gallery }) {
             type="button"
             onClick={() => setActiveIndex(index)}
             aria-label={`Perbesar ${photo.alt}`}
-            className={`group relative overflow-hidden rounded-2xl border border-champagne/80 bg-blush-soft text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose ${
+            className={`group relative overflow-hidden rounded-2xl border border-champagne/80 bg-blush-soft text-left transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose ${
               photo.aspect || 'aspect-[4/5]'
             }`}
           >
@@ -31,16 +31,26 @@ export function GallerySection({ gallery }) {
                 src={photo.src}
                 alt={photo.alt}
                 loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
             ) : (
-              <div className="flex h-full w-full flex-col items-center justify-center p-4 text-center">
-                <span className="font-display text-lg text-rose-dark sm:text-xl">
-                  Galeri {index + 1}
-                </span>
-                <span className="mt-1 text-xs text-muted">
-                  Placeholder Foto
-                </span>
+              <div
+                className="flex h-full w-full flex-col items-center justify-center p-4 text-center"
+                style={{
+                  background:
+                    index % 2 === 0
+                      ? 'linear-gradient(155deg, rgba(253, 242, 245, 1) 0%, rgba(255, 249, 245, 1) 100%)'
+                      : 'linear-gradient(155deg, rgba(242, 247, 252, 1) 0%, rgba(255, 249, 245, 1) 100%)',
+                }}
+              >
+                <div className="flex h-full w-full flex-col items-center justify-center rounded-xl border border-champagne/60 p-3">
+                  <span className="font-display text-2xl italic text-rose-dark">
+                    0{index + 1}
+                  </span>
+                  <span className="mt-1 text-[11px] font-medium tracking-[0.16em] text-muted uppercase">
+                    Momen
+                  </span>
+                </div>
               </div>
             )}
           </button>

@@ -13,16 +13,21 @@ export function EventSection({ event }) {
         subtitle={`Seluruh jadwal ditampilkan dalam zona waktu ${event.timezoneLabel}.`}
       />
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {event.schedules.map((schedule) => (
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10">
+        {event.schedules.map((schedule, index) => (
           <article
             key={schedule.id}
-            className="flex flex-col justify-between rounded-3xl border border-champagne/80 bg-white p-7 sm:p-9"
+            className="flex flex-col justify-between rounded-3xl border border-champagne/80 bg-white/95 p-7 transition-transform duration-200 hover:-translate-y-0.5 sm:p-9"
           >
             <div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-rose-dark uppercase">
-                {schedule.label}
-              </p>
+              <div className="flex items-center justify-between gap-3 border-b border-champagne/60 pb-4">
+                <p className="text-xs font-semibold tracking-[0.2em] text-rose-dark uppercase">
+                  {schedule.label}
+                </p>
+                <span className="font-display text-2xl italic text-champagne">
+                  0{index + 1}
+                </span>
+              </div>
 
               <div className="mt-5 space-y-3 text-sm text-ink">
                 <p className="flex items-start gap-2.5">

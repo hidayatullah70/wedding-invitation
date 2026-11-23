@@ -62,7 +62,13 @@ export function CoupleSection({ intro, couple, event, guestPronoun }) {
         subtitle={introDescription}
       />
 
-      <blockquote className="mx-auto mb-14 max-w-2xl border-l-2 border-champagne pl-5 text-left font-display text-xl italic leading-relaxed text-ink sm:text-2xl">
+      <blockquote className="relative mx-auto mb-14 max-w-2xl border-y border-champagne/70 py-7 text-center font-display text-xl italic leading-relaxed text-ink sm:text-2xl">
+        <span
+          className="mb-1 block font-display text-4xl leading-none text-champagne select-none"
+          aria-hidden="true"
+        >
+          &ldquo;
+        </span>
         {intro.quote}
       </blockquote>
 
@@ -72,28 +78,37 @@ export function CoupleSection({ intro, couple, event, guestPronoun }) {
         {couple.map((person) => (
           <article
             key={person.id}
-            className="flex flex-col items-center text-center"
+            className="group flex flex-col items-center text-center"
           >
-            <div className="mb-6 aspect-[4/5] w-full max-w-xs overflow-hidden rounded-3xl border border-champagne/80 bg-blush-soft">
-              {person.photo ? (
-                <img
-                  src={person.photo}
-                  alt={person.photoAlt}
-                  width="320"
-                  height="400"
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <div className="flex h-full w-full flex-col items-center justify-center p-6 text-center">
-                  <span className="font-display text-2xl text-rose-dark">
-                    Foto {person.role}
-                  </span>
-                  <span className="mt-2 text-xs text-muted">
-                    Placeholder rasio 4:5
-                  </span>
-                </div>
-              )}
+            <div className="mb-6 aspect-[4/5] w-full max-w-xs overflow-hidden rounded-t-[9rem] rounded-b-3xl border border-champagne/80 bg-blush-soft p-2.5 transition-transform duration-300 group-hover:-translate-y-0.5">
+              <div className="h-full w-full overflow-hidden rounded-t-[8.4rem] rounded-b-2xl bg-ivory">
+                {person.photo ? (
+                  <img
+                    src={person.photo}
+                    alt={person.photoAlt}
+                    width="320"
+                    height="400"
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                ) : (
+                  <div
+                    className="flex h-full w-full flex-col items-center justify-center p-6 text-center"
+                    style={{
+                      background:
+                        'linear-gradient(160deg, rgba(253, 242, 245, 0.95) 0%, rgba(255, 249, 245, 1) 55%, rgba(242, 247, 252, 0.95) 100%)',
+                    }}
+                  >
+                    <span className="mb-2 text-[11px] font-semibold tracking-[0.22em] text-rose-dark/80 uppercase">
+                      Potret 4:5
+                    </span>
+                    <span className="font-display text-2xl italic text-ink">
+                      {person.role}
+                    </span>
+                    <span className="mt-3 h-px w-10 bg-champagne" />
+                  </div>
+                )}
+              </div>
             </div>
 
             <p className="text-xs font-semibold tracking-[0.2em] text-rose-dark uppercase">

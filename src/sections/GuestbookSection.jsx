@@ -144,12 +144,17 @@ export function GuestbookSection({ guestbook, timezone }) {
               </div>
 
               <div>
-                <label
-                  htmlFor="wish-message"
-                  className="mb-1.5 block text-sm font-medium text-ink"
-                >
-                  Ucapan &amp; Doa <span className="text-rose-dark">*</span>
-                </label>
+                <div className="mb-1.5 flex items-baseline justify-between gap-2">
+                  <label
+                    htmlFor="wish-message"
+                    className="block text-sm font-medium text-ink"
+                  >
+                    Ucapan &amp; Doa <span className="text-rose-dark">*</span>
+                  </label>
+                  <span className="text-xs tabular-nums text-muted">
+                    {message.length}/500
+                  </span>
+                </div>
                 <textarea
                   id="wish-message"
                   rows={4}

@@ -203,12 +203,17 @@ export function RsvpSection({ rsvp, initialGuestName = '' }) {
           )}
 
           <div>
-            <label
-              htmlFor="rsvp-message"
-              className="mb-1.5 block text-sm font-medium text-ink"
-            >
-              Catatan Opsional
-            </label>
+            <div className="mb-1.5 flex items-baseline justify-between gap-2">
+              <label
+                htmlFor="rsvp-message"
+                className="block text-sm font-medium text-ink"
+              >
+                Catatan Opsional
+              </label>
+              <span className="text-xs tabular-nums text-muted">
+                {message.length}/500
+              </span>
+            </div>
             <textarea
               id="rsvp-message"
               name="message"

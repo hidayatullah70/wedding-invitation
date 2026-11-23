@@ -21,11 +21,15 @@ export function SectionHeading({
         {title}
       </h2>
       <div
-        className={`mt-4 h-px w-16 bg-champagne ${
-          align === 'center' ? 'mx-auto' : ''
+        className={`mt-4 flex items-center gap-2 ${
+          align === 'center' ? 'justify-center' : ''
         }`}
         aria-hidden="true"
-      />
+      >
+        <span className="h-px w-8 bg-champagne" />
+        <span className="h-1.5 w-1.5 rounded-full bg-rose/70" />
+        <span className="h-px w-8 bg-champagne" />
+      </div>
       {subtitle && (
         <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
           {subtitle}

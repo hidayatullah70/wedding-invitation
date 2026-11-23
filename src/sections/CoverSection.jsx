@@ -29,35 +29,44 @@ export function CoverSection({ cover, guestName, onOpen }) {
         />
       )}
 
-      <div className="relative z-10 mx-auto flex w-full max-w-xl flex-col items-center text-center">
-        <span className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-full border border-champagne bg-white/90 font-display text-lg font-medium text-rose-dark">
+      <div
+        className="pointer-events-none absolute inset-4 rounded-[2rem] border border-champagne/60 sm:inset-8"
+        aria-hidden="true"
+      />
+
+      <div className="editorial-enter relative z-10 mx-auto flex w-full max-w-xl flex-col items-center px-2 text-center">
+        <span className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full border border-champagne bg-white/90 font-display text-xl font-medium tracking-wide text-rose-dark shadow-xs">
           {cover.monogram}
         </span>
 
-        <p className="text-xs font-semibold tracking-[0.24em] text-rose-dark uppercase">
+        <p className="text-xs font-semibold tracking-[0.28em] text-rose-dark uppercase">
           {cover.eyebrow}
         </p>
 
-        <h1 className="mt-4 font-display text-5xl font-medium tracking-tight text-ink sm:text-6xl">
+        <h1 className="mt-4 font-display text-5xl font-medium tracking-tight text-ink sm:text-7xl">
           <span>{cover.partnerOneShort}</span>
           <span className="mx-3 font-normal italic text-rose-dark">&amp;</span>
           <span>{cover.partnerTwoShort}</span>
         </h1>
 
-        <p className="mt-4 text-sm font-medium tracking-wide text-muted sm:text-base">
+        <p className="mt-4 text-sm font-medium tracking-[0.14em] text-muted uppercase sm:text-base">
           {cover.dateLabel}
         </p>
 
         <div
-          className="my-8 h-px w-20 bg-champagne"
+          className="my-8 flex items-center gap-2.5"
           aria-hidden="true"
-        />
+        >
+          <span className="h-px w-10 bg-champagne" />
+          <span className="h-1.5 w-1.5 rounded-full bg-rose/70" />
+          <span className="h-px w-10 bg-champagne" />
+        </div>
 
-        <div className="w-full max-w-sm rounded-3xl border border-champagne/80 bg-white/85 px-6 py-5 backdrop-blur-xs">
-          <p className="text-xs tracking-wider text-muted uppercase">
+        <div className="w-full max-w-sm border-y border-champagne/70 bg-white/65 px-6 py-5 backdrop-blur-xs">
+          <p className="text-[11px] font-semibold tracking-[0.22em] text-muted uppercase">
             {cover.greetingPrefix}
           </p>
-          <p className="mt-1.5 font-display text-2xl font-medium text-ink break-words">
+          <p className="mt-1.5 font-display text-2xl font-medium text-ink break-words sm:text-3xl">
             {guestName}
           </p>
         </div>
@@ -65,7 +74,7 @@ export function CoverSection({ cover, guestName, onOpen }) {
         <Button
           size="lg"
           onClick={onOpen}
-          className="mt-8 w-full max-w-xs"
+          className="mt-8 w-full max-w-xs shadow-xs"
         >
           {cover.openButtonLabel}
         </Button>
