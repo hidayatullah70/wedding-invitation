@@ -106,9 +106,9 @@ export function GuestbookSection({ guestbook, timezone }) {
         subtitle={guestbook.subtitle}
       />
 
-      <div className="mx-auto grid max-w-4xl grid-cols-1 gap-8 lg:grid-cols-12">
-        <div className="lg:col-span-5">
-          <div className="rounded-3xl border border-champagne/80 bg-white p-6">
+      <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-12">
+        <div className="min-w-0 lg:col-span-5">
+          <div className="rounded-3xl border border-champagne/80 bg-white p-4 sm:p-6">
             {isDemoMode && <DemoModeBanner />}
 
             <form onSubmit={handleSubmit} noValidate className="space-y-4">
@@ -203,7 +203,7 @@ export function GuestbookSection({ guestbook, timezone }) {
           </div>
         </div>
 
-        <div className="lg:col-span-7">
+        <div className="min-w-0 lg:col-span-7">
           {listState === 'loading' && (
             <div
               role="status"
@@ -241,7 +241,7 @@ export function GuestbookSection({ guestbook, timezone }) {
               {entries.map((entry) => (
                 <li
                   key={entry.id}
-                  className="rounded-2xl border border-champagne/70 bg-white p-5"
+                  className="rounded-2xl border border-champagne/70 bg-white p-4 sm:p-5"
                 >
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <h3 className="font-display text-xl font-semibold text-ink break-words">

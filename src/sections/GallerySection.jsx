@@ -15,14 +15,14 @@ export function GallerySection({ gallery }) {
         subtitle={gallery.subtitle}
       />
 
-      <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-5 lg:grid-cols-4">
         {gallery.items.map((photo, index) => (
           <button
             key={photo.id}
             type="button"
             onClick={() => setActiveIndex(index)}
             aria-label={`Perbesar ${photo.alt}`}
-            className={`group relative overflow-hidden rounded-2xl border border-champagne/80 bg-blush-soft text-left transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose ${
+            className={`group relative min-w-0 overflow-hidden rounded-2xl border border-champagne/80 bg-blush-soft text-left transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose ${
               photo.aspect || 'aspect-[4/5]'
             }`}
           >
@@ -35,7 +35,7 @@ export function GallerySection({ gallery }) {
               />
             ) : (
               <div
-                className="flex h-full w-full flex-col items-center justify-center p-4 text-center"
+                className="flex h-full w-full flex-col items-center justify-center p-2.5 text-center sm:p-4"
                 style={{
                   background:
                     index % 2 === 0

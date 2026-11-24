@@ -53,16 +53,16 @@ export function GiftSection({ gift }) {
           return (
             <article
               key={account.id}
-              className="flex flex-col justify-between rounded-3xl border border-champagne/80 bg-ivory p-6"
+              className="flex min-w-0 flex-col justify-between rounded-3xl border border-champagne/80 bg-ivory p-4 sm:p-6"
             >
-              <div>
-                <p className="text-xs font-semibold tracking-[0.18em] text-rose-dark uppercase">
+              <div className="min-w-0">
+                <p className="text-xs font-semibold tracking-[0.18em] text-rose-dark uppercase break-words">
                   {account.provider}
                 </p>
-                <p className="mt-3 font-mono text-base font-semibold tracking-wide text-ink break-all">
+                <p className="mt-3 font-mono text-sm font-semibold tracking-wide text-ink break-all sm:text-base">
                   {account.accountNumber}
                 </p>
-                <p className="mt-1 text-sm text-muted">
+                <p className="mt-1 text-sm text-muted break-words">
                   {account.accountHolder}
                 </p>
               </div>

@@ -36,11 +36,11 @@ export function Navbar({ monogram, items }) {
   };
 
   return (
-    <header className="sticky top-0 z-30 border-b border-champagne/60 bg-ivory/95 backdrop-blur-sm">
-      <Container className="flex h-16 items-center justify-between">
+    <header className="sticky top-0 z-30 w-full max-w-full border-b border-champagne/60 bg-ivory/95 backdrop-blur-sm">
+      <Container className="flex h-16 items-center justify-between gap-3">
         <a
           href="#couple"
-          className="font-display text-xl font-semibold tracking-wide text-ink transition-colors hover:text-rose-dark"
+          className="min-w-0 truncate font-display text-xl font-semibold tracking-wide text-ink transition-colors hover:text-rose-dark"
         >
           {monogram}
         </a>
@@ -85,7 +85,7 @@ export function Navbar({ monogram, items }) {
         <nav
           id="mobile-nav-menu"
           aria-label="Navigasi mobile"
-          className="border-t border-champagne/60 bg-ivory md:hidden"
+          className="mobile-scroll-container max-h-[70dvh] overflow-y-auto border-t border-champagne/60 bg-ivory md:hidden"
         >
           <Container className="py-3">
             <ul className="grid grid-cols-2 gap-2">

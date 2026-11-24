@@ -13,18 +13,18 @@ export function EventSection({ event }) {
         subtitle={`Seluruh jadwal ditampilkan dalam zona waktu ${event.timezoneLabel}.`}
       />
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-10">
         {event.schedules.map((schedule, index) => (
           <article
             key={schedule.id}
-            className="flex flex-col justify-between rounded-3xl border border-champagne/80 bg-white/95 p-7 transition-transform duration-200 hover:-translate-y-0.5 sm:p-9"
+            className="flex min-w-0 flex-col justify-between rounded-3xl border border-champagne/80 bg-white/95 p-5 transition-transform duration-200 hover:-translate-y-0.5 sm:p-9"
           >
-            <div>
+            <div className="min-w-0">
               <div className="flex items-center justify-between gap-3 border-b border-champagne/60 pb-4">
-                <p className="text-xs font-semibold tracking-[0.2em] text-rose-dark uppercase">
+                <p className="min-w-0 text-xs font-semibold tracking-[0.2em] text-rose-dark uppercase break-words">
                   {schedule.label}
                 </p>
-                <span className="font-display text-2xl italic text-champagne">
+                <span className="shrink-0 font-display text-2xl italic text-champagne">
                   0{index + 1}
                 </span>
               </div>
@@ -32,7 +32,7 @@ export function EventSection({ event }) {
               <div className="mt-5 space-y-3 text-sm text-ink">
                 <p className="flex items-start gap-2.5">
                   <CalendarIcon className="mt-0.5 h-4 w-4 shrink-0 text-rose-dark" />
-                  <span>
+                  <span className="min-w-0 break-words">
                     <strong className="font-semibold">
                       {schedule.dateText}
                     </strong>
@@ -44,7 +44,7 @@ export function EventSection({ event }) {
 
                 <p className="flex items-start gap-2.5">
                   <MapPinIcon className="mt-0.5 h-4 w-4 shrink-0 text-rose-dark" />
-                  <span>
+                  <span className="min-w-0 break-words">
                     <strong className="font-semibold">
                       {schedule.venueName}
                     </strong>

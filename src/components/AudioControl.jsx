@@ -80,16 +80,19 @@ export function AudioControl({ audioConfig }) {
         onClick={handleToggle}
         aria-label={label}
         aria-pressed={isPlaying}
-        className="inline-flex min-h-11 items-center gap-2 rounded-full border border-champagne bg-white/95 px-4 py-2 text-xs font-medium text-ink shadow-sm backdrop-blur-sm transition-all active:scale-95 hover:border-rose hover:text-rose-dark"
+        className="inline-flex min-h-11 min-w-11 items-center gap-2 rounded-full border border-champagne bg-white/95 px-3 py-2 text-xs font-medium text-ink shadow-sm backdrop-blur-sm transition-all active:scale-95 hover:border-rose hover:text-rose-dark sm:px-4"
       >
-        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-blush-soft text-rose-dark">
+        <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blush-soft text-rose-dark">
           {isPlaying ? (
             <PauseIcon className="h-3.5 w-3.5" />
           ) : (
             <PlayIcon className="h-3.5 w-3.5" />
           )}
         </span>
-        <span>
+        <span className="sm:hidden">
+          {status === 'playing' ? 'Jeda' : 'Musik'}
+        </span>
+        <span className="hidden sm:inline">
           {status === 'playing'
             ? 'Musik Aktif'
             : status === 'unavailable'

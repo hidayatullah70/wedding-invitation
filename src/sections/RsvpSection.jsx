@@ -97,7 +97,7 @@ export function RsvpSection({ rsvp, initialGuestName = '' }) {
         subtitle={rsvp.subtitle}
       />
 
-      <div className="mx-auto max-w-xl rounded-3xl border border-champagne/80 bg-white p-6 sm:p-9">
+      <div className="mx-auto max-w-xl rounded-3xl border border-champagne/80 bg-white p-4 sm:p-9">
         {isRsvpDemoMode && (
           <DemoModeBanner envVarName="VITE_GOOGLE_SHEET_RSVP_URL" />
         )}
@@ -137,14 +137,14 @@ export function RsvpSection({ rsvp, initialGuestName = '' }) {
             <legend className="mb-2 block text-sm font-medium text-ink">
               Konfirmasi Kehadiran <span className="text-rose-dark">*</span>
             </legend>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
               {[
                 { value: 'attending', label: 'Hadir' },
                 { value: 'not_attending', label: 'Tidak Hadir' },
               ].map((option) => (
                 <label
                   key={option.value}
-                  className={`flex min-h-11 cursor-pointer items-center justify-center rounded-xl border px-4 py-2.5 text-sm font-medium transition-colors ${
+                  className={`flex min-h-12 cursor-pointer items-center justify-center rounded-xl border px-3 py-2.5 text-sm font-medium transition-all active:scale-95 sm:px-4 ${
                     attendance === option.value
                       ? 'border-rose bg-blush-soft text-rose-dark'
                       : 'border-champagne bg-ivory text-ink hover:border-rose/60'

@@ -92,26 +92,26 @@ export function Lightbox({ items, activeIndex, onClose, onNavigate }) {
           )}
         </div>
 
-        <div className="flex shrink-0 items-center justify-center gap-3 border-t border-champagne/60 bg-white/70 px-4 py-3.5 sm:px-6">
+        <div className="flex shrink-0 items-center justify-center gap-2.5 border-t border-champagne/60 bg-white/70 px-4 py-3.5 sm:gap-3 sm:px-6">
           <button
             type="button"
             onClick={() =>
               onNavigate((activeIndex - 1 + items.length) % items.length)
             }
             aria-label="Foto sebelumnya"
-            className="inline-flex min-h-11 items-center gap-1 rounded-full border border-champagne bg-white px-4 text-xs font-medium text-ink transition-all active:scale-95 hover:border-rose hover:text-rose-dark"
+            className="inline-flex min-h-11 flex-1 items-center justify-center gap-1 rounded-full border border-champagne bg-white px-4 text-xs font-medium text-ink transition-all active:scale-95 hover:border-rose hover:text-rose-dark sm:flex-none"
           >
-            <ChevronLeftIcon className="h-4 w-4" />
+            <ChevronLeftIcon className="h-4 w-4 shrink-0" />
             Sebelumnya
           </button>
           <button
             type="button"
             onClick={() => onNavigate((activeIndex + 1) % items.length)}
             aria-label="Foto berikutnya"
-            className="inline-flex min-h-11 items-center gap-1 rounded-full border border-champagne bg-white px-4 text-xs font-medium text-ink transition-all active:scale-95 hover:border-rose hover:text-rose-dark"
+            className="inline-flex min-h-11 flex-1 items-center justify-center gap-1 rounded-full border border-champagne bg-white px-4 text-xs font-medium text-ink transition-all active:scale-95 hover:border-rose hover:text-rose-dark sm:flex-none"
           >
             Berikutnya
-            <ChevronRightIcon className="h-4 w-4" />
+            <ChevronRightIcon className="h-4 w-4 shrink-0" />
           </button>
         </div>
       </div>

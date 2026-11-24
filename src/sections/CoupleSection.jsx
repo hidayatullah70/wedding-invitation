@@ -35,7 +35,7 @@ function CountdownBlock({ event }) {
         {units.map((unit) => (
           <div
             key={unit.label}
-            className="min-w-0 rounded-2xl border border-champagne/80 bg-ivory px-1.5 py-3.5 sm:px-2 sm:py-5"
+            className="min-w-0 rounded-2xl border border-champagne/80 bg-ivory px-1 py-3 sm:px-2 sm:py-5"
           >
             <p className="font-display text-2xl font-semibold tabular-nums text-rose-dark sm:text-4xl">
               {String(unit.value).padStart(2, '0')}
@@ -78,10 +78,10 @@ export function CoupleSection({ intro, couple, event, guestPronoun }) {
         {couple.map((person) => (
           <article
             key={person.id}
-            className="group flex flex-col items-center text-center"
+            className="group flex min-w-0 flex-col items-center text-center"
           >
-            <div className="mb-6 aspect-[4/5] w-full max-w-xs overflow-hidden rounded-t-[9rem] rounded-b-3xl border border-champagne/80 bg-blush-soft p-2.5 transition-transform duration-300 group-hover:-translate-y-0.5">
-              <div className="h-full w-full overflow-hidden rounded-t-[8.4rem] rounded-b-2xl bg-ivory">
+            <div className="mb-6 aspect-[4/5] w-full max-w-[260px] overflow-hidden rounded-t-[8rem] rounded-b-3xl border border-champagne/80 bg-blush-soft p-2 transition-transform duration-300 group-hover:-translate-y-0.5 sm:max-w-xs sm:rounded-t-[9rem] sm:p-2.5">
+              <div className="h-full w-full overflow-hidden rounded-t-[7.5rem] rounded-b-2xl bg-ivory sm:rounded-t-[8.4rem]">
                 {person.photo ? (
                   <img
                     src={person.photo}
@@ -114,10 +114,12 @@ export function CoupleSection({ intro, couple, event, guestPronoun }) {
             <p className="text-xs font-semibold tracking-[0.2em] text-rose-dark uppercase">
               {person.role}
             </p>
-            <h3 className="mt-2 font-display text-3xl font-medium text-ink">
+            <h3 className="mt-2 max-w-full font-display text-2xl font-medium text-ink break-words sm:text-3xl">
               {person.fullName}
             </h3>
-            <p className="mt-2 text-sm text-muted">{person.parents}</p>
+            <p className="mt-2 max-w-full text-sm text-muted break-words">
+              {person.parents}
+            </p>
             {person.bio && (
               <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
                 {person.bio}
