@@ -185,15 +185,18 @@ export const invitationConfig = {
   },
   audio: {
     enabled: true,
-    title: '[Judul Lagu Latar Placeholder]',
-    // Letakkan file audio di public/audio/backsound.mp3 lalu ubah src menjadi '/audio/backsound.mp3'
-    src: '',
+    title: 'Beautiful in White',
+    // File berada di public/audio/wedding-beautiful-in-white.mp3
+    src: '/audio/wedding-beautiful-in-white.mp3',
   },
   footer: {
     closingMessage:
       'Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila {guestPronoun} berkenan hadir dan memberikan doa restu.',
     coupleSignature: '[Nama A] & [Nama B]',
-    credit: 'Dibuat dengan penuh cinta • [Tahun]',
+    creditPrefix: 'Dibuat dengan ❤️ oleh ',
+    creditLinkBrand: 'bionora',
+    creditLinkAccent: 'Dev',
+    creditLinkUrl: 'https://bionora.my.id/',
     socials: [
       // Opsional: tambahkan tautan sosial pasangan jika diinginkan
     ],

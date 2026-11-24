@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { AudioControl } from './components/AudioControl.jsx';
 import { Navbar } from './components/Navbar.jsx';
 import { invitationConfig } from './data/invitation.js';
+import { useBackgroundAudio } from './hooks/useBackgroundAudio.js';
 import { CoupleSection } from './sections/CoupleSection.jsx';
 import { CoverSection } from './sections/CoverSection.jsx';
 import { EventSection } from './sections/EventSection.jsx';
@@ -22,10 +23,16 @@ export default function App() {
     urlGuestName,
     invitationConfig.cover.defaultGuestName
   );
+  const audio = useBackgroundAudio(invitationConfig.audio);
 
   useEffect(() => {
     document.title = invitationConfig.meta.title;
   }, []);
+
+  const handleOpenInvitation = () => {
+    setIsOpened(true);
+    audio.play();
+  };
 
   if (!isOpened) {
     return (
@@ -33,7 +40,7 @@ export default function App() {
         <CoverSection
           cover={invitationConfig.cover}
           guestName={coverGuestName}
-          onOpen={() => setIsOpened(true)}
+          onOpen={handleOpenInvitation}
         />
       </main>
     );
@@ -78,7 +85,12 @@ export default function App() {
         footer={invitationConfig.footer}
         guestPronoun={guestPronoun}
       />
-      <AudioControl audioConfig={invitationConfig.audio} />
+      <AudioControl
+        audioConfig={invitationConfig.audio}
+        status={audio.status}
+        notice={audio.notice}
+        onToggle={audio.toggle}
+      />
     </div>
   );
 }

@@ -99,6 +99,42 @@
   transform: scaleX(1);
 }
 
+@keyframes audio-ring-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.audio-ring-spinner {
+  background: conic-gradient(
+    from 0deg,
+    var(--color-rose) 0deg 95deg,
+    var(--color-blue) 95deg 195deg,
+    var(--color-champagne) 195deg 275deg,
+    var(--color-blush) 275deg 335deg,
+    var(--color-rose) 335deg 360deg
+  );
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 3px),
+    #000 calc(100% - 2.5px)
+  );
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 3px),
+    #000 calc(100% - 2.5px)
+  );
+  animation: audio-ring-spin 3.2s linear infinite;
+  animation-play-state: paused;
+}
+
+.audio-ring-spinner[data-playing="true"] {
+  animation-play-state: running;
+}
+
 /* Cegah iOS Safari auto-zoom saat fokus input form di layar mobile */
 @media screen and (max-width: 640px) {
   input[type="text"],

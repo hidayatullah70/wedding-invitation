@@ -37,7 +37,27 @@ export function FooterSection({ footer, guestPronoun }) {
           aria-hidden="true"
         />
 
-        <p className="text-xs text-muted">{footer.credit}</p>
+        <p className="text-xs text-muted">
+          {footer.creditPrefix}
+          {footer.creditLinkUrl ? (
+            <a
+              href={footer.creditLinkUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group font-bold text-ink no-underline transition-colors duration-200 hover:text-blue-600"
+            >
+              {footer.creditLinkBrand}
+              <span className="text-blue-900 transition-colors duration-200 group-hover:text-blue-600">
+                {footer.creditLinkAccent}
+              </span>
+            </a>
+          ) : (
+            <span className="font-bold text-ink">
+              {footer.creditLinkBrand}
+              <span className="text-blue-900">{footer.creditLinkAccent}</span>
+            </span>
+          )}
+        </p>
       </Container>
     </footer>
   );

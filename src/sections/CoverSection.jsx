@@ -82,8 +82,8 @@ export function CoverSection({ cover, guestName, onOpen }) {
         </Button>
 
         <p className="mt-4 text-xs text-muted">
-          Musik tidak diputar otomatis; kontrol audio tersedia setelah undangan
-          dibuka.
+          Musik latar mulai diputar saat undangan dibuka dan dapat dijeda kapan
+          saja.
         </p>
       </div>
     </section>

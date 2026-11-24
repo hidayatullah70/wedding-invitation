@@ -1,47 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
 import { PauseIcon, PlayIcon } from './Icons.jsx';
 
-export function AudioControl({ audioConfig }) {
-  const audioRef = useRef(null);
-  const [status, setStatus] = useState(
-    audioConfig?.src ? 'paused' : 'unavailable'
-  );
-  const [notice, setNotice] = useState('');
-
-  useEffect(() => {
-    const audioEl = audioRef.current;
-    return () => {
-      if (audioEl) {
-        audioEl.pause();
-      }
-    };
-  }, []);
-
+export function AudioControl({ audioConfig, status, notice, onToggle }) {
   if (!audioConfig?.enabled) return null;
-
-  const handleToggle = async () => {
-    if (!audioConfig.src || !audioRef.current) {
-      setStatus('unavailable');
-      setNotice('File audio latar belum ditambahkan di konfigurasi.');
-      return;
-    }
-
-    if (status === 'playing') {
-      audioRef.current.pause();
-      setStatus('paused');
-      setNotice('');
-      return;
-    }
-
-    try {
-      await audioRef.current.play();
-      setStatus('playing');
-      setNotice('');
-    } catch {
-      setStatus('unavailable');
-      setNotice('Audio gagal diputar. Undangan tetap dapat digunakan.');
-    }
-  };
 
   const isPlaying = status === 'playing';
   const label = isPlaying
@@ -62,44 +22,30 @@ export function AudioControl({ audioConfig }) {
         </p>
       )}
 
-      {audioConfig.src && (
-        <audio
-          ref={audioRef}
-          src={audioConfig.src}
-          loop
-          preload="none"
-          onError={() => {
-            setStatus('unavailable');
-            setNotice('File audio tidak dapat dimuat.');
-          }}
+      <div className="relative inline-flex h-[58px] w-[58px] items-center justify-center rounded-full">
+        <span
+          aria-hidden="true"
+          data-playing={isPlaying ? 'true' : 'false'}
+          className={`audio-ring-spinner pointer-events-none absolute inset-0 rounded-full transition-opacity duration-300 ${
+            isPlaying ? 'opacity-100' : 'opacity-45'
+          }`}
         />
-      )}
 
-      <button
-        type="button"
-        onClick={handleToggle}
-        aria-label={label}
-        aria-pressed={isPlaying}
-        className="inline-flex min-h-11 min-w-11 items-center gap-2 rounded-full border border-champagne bg-white/95 px-3 py-2 text-xs font-medium text-ink shadow-sm backdrop-blur-sm transition-all active:scale-95 hover:border-rose hover:text-rose-dark sm:px-4"
-      >
-        <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blush-soft text-rose-dark">
+        <button
+          type="button"
+          onClick={onToggle}
+          aria-label={label}
+          aria-pressed={isPlaying}
+          title={label}
+          className="relative z-10 inline-flex h-12 w-12 items-center justify-center rounded-full border border-champagne bg-white/95 text-rose-dark shadow-md backdrop-blur-sm transition-all active:scale-95 hover:border-rose hover:bg-blush-soft"
+        >
           {isPlaying ? (
-            <PauseIcon className="h-3.5 w-3.5" />
+            <PauseIcon className="h-4 w-4" />
           ) : (
-            <PlayIcon className="h-3.5 w-3.5" />
+            <PlayIcon className="ml-0.5 h-4 w-4" />
           )}
-        </span>
-        <span className="sm:hidden">
-          {status === 'playing' ? 'Jeda' : 'Musik'}
-        </span>
-        <span className="hidden sm:inline">
-          {status === 'playing'
-            ? 'Musik Aktif'
-            : status === 'unavailable'
-              ? 'Musik Belum Siap'
-              : 'Putar Musik'}
-        </span>
-      </button>
+        </button>
+      </div>
     </div>
   );
 }
